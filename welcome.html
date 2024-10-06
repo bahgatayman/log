@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h2 id="welcome-message"></h2>
+
+    <script>
+        
+        const currentUser = localStorage.getItem('currentUser');
+        
+        if (currentUser) {
+            document.getElementById('welcome-message').textContent = `Welcome, ${currentUser}!`;
+        } else {
+            document.getElementById('welcome-message').textContent = 'Welcome, guest!';
+        }
+    </script>
+</body>
+</html>
