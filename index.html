@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="login-form">
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" required>
+        <br><span id="span1" style="color: red;"></span><br>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" required>
+        <br><span id="span2" style="color: red;"></span><br>
+        <button type="submit">Login</button>
+        <a href="sign.html">Don't have an account?</a>
+    </form>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const loginUsername = document.getElementById('login-username').value;
+            const loginPassword = document.getElementById('login-password').value;
+
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+
+            const span1 = document.getElementById('span1');
+            const span2 = document.getElementById('span2');
+
+            
+            span1.innerHTML = '';
+            span2.innerHTML = '';
+
+            
+            if (loginUsername !== storedUsername) {
+                span1.innerHTML = 'Not valid username';
+            }
+            if (loginPassword !== storedPassword) {
+                span2.innerHTML = 'Not valid password';
+            }
+
+            
+            if (loginUsername === storedUsername && loginPassword === storedPassword) {
+                localStorage.setItem('currentUser', loginUsername);
+                window.location.href = 'welcome.html';
+            }
+        });
+    </script>
+</body>
+</html>
